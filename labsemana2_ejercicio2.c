@@ -22,10 +22,15 @@ int main(int argc, char *argv[]) {
 	
 	int ArrayItemsJugadorUno[ItemsReales];
 	int ArrayItemsJugadorDos[ItemsReales];
+	int ArrayItemsMaximos[ItemsReales];
 	int ArrayItemsTotales[ItemsReales];
 	
-	for(i=0;i<ItemsReales;i++)
-		ArrayItemsTotales[i]=5;
+	
+	for(i=0;i<ItemsReales;i++){
+	
+		ArrayItemsMaximos[i]=5;
+		ArrayItemsTotales[i]=0;
+	}
 	
 	printf("\n para el juagador UNO");
 	for(i=0;i<ItemsReales;i++){
@@ -34,7 +39,9 @@ int main(int argc, char *argv[]) {
 			printf("\n indique cuantos items tiene del tipo %d con un max de 5",i);
 			scanf("%d",&auxItems);
 			ArrayItemsJugadorUno[i]=auxItems;
-		}while(auxItems>ArrayItemsTotales[i]);
+		}while(auxItems>ArrayItemsMaximos[i]);
+		
+		ArrayItemsTotales[i]+=auxItems;
 		
 	}
 	printf("\n para el juagador DOS");
@@ -44,13 +51,15 @@ int main(int argc, char *argv[]) {
 		printf("\n indique cuantas items tiene del tipo %d con un max de 5",i);
 		scanf("%d",&auxItems);
 		ArrayItemsJugadorDos[i]=auxItems;
-		}while(auxItems + ArrayItemsJugadorUno[i]>ArrayItemsTotales[i] );
+		}while(auxItems + ArrayItemsJugadorUno[i]>ArrayItemsMaximos[i] );
+		ArrayItemsTotales[i]+=auxItems;
 		
 	}
 	
 	for(i=0;i<ItemsReales;i++){
 		printf("\n el jugador UNO tiene %d items del tipo %d",ArrayItemsJugadorUno[i],i);
 		printf("\n el jugador DOS tiene %d items del tipo %d",ArrayItemsJugadorDos[i],i);
+		printf("\n en total se tiene %d items del tipo %d",ArrayItemsTotales[i],i);
 		
 	}
 	
